@@ -16,4 +16,4 @@ for i in range(len(ascii_list)):
     temp_sum += cur_sum
 
 
-print(temp_sum)
+print(temp_sum % m)
