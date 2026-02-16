@@ -1,27 +1,22 @@
-# WWF: 가장 숫자가 많은 리스트의 갯수 + 그 리스트
+n = int(input())
 
-N = int(input())
+max_len = 0
+best_seq = []
 
-temp_len = 1
-final_list = []
+for i in range(1, n + 1):
+    temp_seq = [n, i]
 
-for i in range(0, N+1):
-    num_list = [N]
-    num_list.append(i)
     while True:
-        j = num_list[-2] - num_list[-1]
-        if j >= 0:
-            num_list.append(j)
+        next_val = temp_seq[-2] - temp_seq[-1]
 
-        else:
+        if next_val < 0:
             break
 
+        temp_seq.append(next_val)
 
-    if len(num_list) > temp_len:
-        temp_len = len(num_list)
-        final_list = num_list
+    if len(temp_seq) > max_len:
+        max_len = len(temp_seq)
+        best_seq = temp_seq
 
-
-print(temp_len)
-print(*final_list)
-
+print(max_len)
+print(*best_seq)
