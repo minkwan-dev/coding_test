@@ -1,32 +1,30 @@
-width, height = map(int, input().split())
+x, y = map(int, input().split())
+height = [0]
+width = [0]
+height.append(y)
+width.append(x)
 
-row_cuts = [0, height]
-col_cuts = [0, width]
-
-n = int(input())
-
-for _ in range(n):
-    direction, cut_point = map(int, input().split())
-
-    if direction == 0:
-        row_cuts.append(cut_point)
-    
+N = int(input())
+#가로/ 세로 변에서 각각 나눠지는 포인트를 저장함
+for _ in range(N):
+    i, j = map(int, input().split())
+    if i == 0:
+        height.append(j)
     else:
-        col_cuts.append(cut_point)
+        width. append(j)
 
-row_cuts.sort()
-col_cuts.sort()
+# ascneding 오더로 정리
+height.sort()
+width.sort()
+# 각각 잘라지는 포인트들의 거리를 구함
+# 가로 거리, 세로 거리를 곱해서 넓이를 구함
+# 넓이 중 최대값을 구함
+max_area = 0
+for a in range(len(height)-1):
+    h_diff = height[a+1] - height[a]
+    for b in range(len(width)-1):
+        w_diff = width[b+1] - width[b]
+        if max_area < w_diff * h_diff:
+            max_area = w_diff * h_diff
 
-max_row = 0
-for i in range(len(row_cuts) - 1):
-    diff = row_cuts[i+1] - row_cuts[i]
-    if diff > max_row:
-        max_row = diff
-
-max_col = 0
-for i in range(len(col_cuts) - 1):
-    diff = col_cuts[i+1] - col_cuts[i]
-    if diff > max_col:
-        max_col = diff
-
-print(max_row * max_col)
+print(max_area)
