@@ -1,12 +1,14 @@
-card_num, limit_sum = map(int, input().split())
-num_list = list(map(int, input().split()))[:card_num]
-ans = 0
+N, M = map(int, input().split())
+cards = list(map(int, input().split()))
 
-for i in range(card_num):
-	for j in range(i + 1, card_num):
-		for k in range(j + 1, card_num):
-			temp = num_list[i] + num_list[j] + num_list[k]
-			if (temp <= limit_sum) and (temp > ans):
-				ans = temp
+max_sum = 0
 
-print(ans)
+for i in range(N):
+    for j in range(i + 1, N):
+        for k in range(j + 1, N):
+            current_sum = cards[i] + cards[j] + cards[k]
+            
+            if current_sum <= M:
+                max_sum = max(max_sum, current_sum)
+
+print(max_sum)
