@@ -12,7 +12,7 @@ def solution(participant, completion):
     for name in completion:
         hash_map[name] -= 1
         
-    # 횟수가 0이 아닌 선수가, 완주하지 못한 선수    
+    # 3. 횟수가 0이 아닌 선수가, 완주하지 못한 선수    
     for name in hash_map:
         if hash_map[name] > 0:
             return name
